@@ -50,6 +50,11 @@ function onSelectedCurrency() {
   })
 }
 
+// function closeBill() {
+//   showBill.value = false
+//   disableCard.value = true
+// }
+
 const showSuccessMessage = ref(false)
 function showMessage() {
   showSuccessMessage.value = true
@@ -82,7 +87,7 @@ function showMessage() {
     <button @click="showCartBill" class="buy">خرید</button>
   </div>
 
-  <div class="bill">
+  <div v-if="showBill" class="bill">
     <div class="w-full p-8">
       <div class="BillPayment">
         <h1 class="label">قبض خرید و پرداخت</h1>
@@ -100,13 +105,12 @@ function showMessage() {
         <span class="label">دریافت</span>
       </div>
 
-      <div class="flex justify-end mt-8">
+      <div class="flex justify-end gap-1 items-center mt-8">
+        <label class="label">تایید قبض</label>
         <input @click="showMessage" class="checkbox" type="checkbox" />
       </div>
 
-      <div v-if="showSuccessMessage" class="boxSuccess">
-        <h1 class="text-center font-bold text-white">عملیات موفق امیز بود</h1>
-      </div>
+      <h1 v-if="showSuccessMessage" class="success">*-عملیات موفق امیز بود-*</h1>
     </div>
   </div>
 </template>
@@ -140,7 +144,7 @@ function showMessage() {
 .checkbox {
   @apply text-right cursor-pointer;
 }
-.boxSuccess {
-  @apply mt-5 px-2 opacity-80 shadow-md py-3 bg-[#21bf73] rounded-lg;
+.success {
+  @apply text-center font-bold text-[#21bf73] mt-4;
 }
 </style>
