@@ -10,6 +10,6 @@ import CardCurrency from './components/CardCurrency.vue'
 
 <style scoped>
 .warper {
-  @apply flex justify-center flex-col gap-9 items-center mt-24;
+  @apply flex justify-center items-center mt-24;
 }
 </style>

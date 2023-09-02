@@ -38,22 +38,23 @@ function showCartBill() {
 }
 
 function onAmountInput() {
+  if (isNaN(amount.value)) {
+    amount.value = ''
+  }
   const debouncedFn = createDebounce()
   debouncedFn(() => {
     selectedCurrency.value.amount = +amount.value / currency.value.pricePerUnit
   })
 }
 function onSelectedCurrency() {
+  if (isNaN(selectedCurrency.value.amount)) {
+    selectedCurrency.value.amount = ''
+  }
   const debouncedFn = createDebounce()
   debouncedFn(() => {
     amount.value = +selectedCurrency.value.amount * currency.value.pricePerUnit
   })
 }
-
-// function closeBill() {
-//   showBill.value = false
-//   disableCard.value = true
-// }
 
 const showSuccessMessage = ref(false)
 function showMessage() {
@@ -61,6 +62,7 @@ function showMessage() {
   setTimeout(() => {
     showBill.value = false
     disableCard.value = true
+    showSuccessMessage.value = false
     amount.value = 0
     selectedCurrency.value.amount = 0
   }, 2000)
@@ -93,19 +95,19 @@ function showMessage() {
         <h1 class="label">قبض خرید و پرداخت</h1>
       </div>
 
-      <div class="flex justify-between items-center mt-8">
+      <div class="payment">
         <span class=" ">{{ amount.toLocaleString() }}</span>
 
         <span class="label">پرداخت</span>
       </div>
 
-      <div class="flex justify-between items-center mt-8">
+      <div class="receive">
         <span>{{ selectedCurrency.amount }}</span>
 
         <span class="label">دریافت</span>
       </div>
 
-      <div class="flex justify-end gap-1 items-center mt-8">
+      <div class="confirmation">
         <label class="label">تایید قبض</label>
         <input @click="showMessage" class="checkbox" type="checkbox" />
       </div>
@@ -116,7 +118,7 @@ function showMessage() {
 </template>
 <style scoped>
 .card {
-  @apply bg-white shadow-xl rounded-lg p-10 flex flex-col gap-12 w-1/2;
+  @apply bg-white shadow-xl rounded-lg p-10 flex flex-col gap-12 w-auto;
 }
 
 .buy {
@@ -141,10 +143,19 @@ function showMessage() {
 .BillPayment {
   @apply flex justify-center items-center;
 }
+.receive {
+  @apply flex justify-between items-center mt-8;
+}
+.payment {
+  @apply flex justify-between items-center mt-8;
+}
+.confirmation {
+  @apply flex justify-end gap-1 items-center mt-8;
+}
 .checkbox {
   @apply text-right cursor-pointer;
 }
 .success {
-  @apply text-center font-bold text-[#21bf73] mt-4;
+  @apply text-center font-bold text-[#21bf73]  mt-4;
 }
 </style>
