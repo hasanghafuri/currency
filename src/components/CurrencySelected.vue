@@ -33,19 +33,19 @@ watchEffect(() => {
 
 <style scoped>
 .warper {
-  @apply flex items-center justify-center px-3 py-4 rounded-lg bg-[#fafafa];
+  @apply flex items-center justify-center px-3 py-2 rounded-lg bg-[#fafafa];
 }
 .label {
   @apply text-gray-500 text-opacity-80 font-bold;
 }
 
 .selectCurrency {
-  @apply border-none bg-[#fafafa]  rounded-lg p-4 shadow-md;
+  @apply border-none bg-[#fafafa]  rounded-lg p-2;
 }
 .amountCurrency {
-  @apply border-none bg-[#fafafa] w-full px-3 py-4;
+  @apply border-none bg-[#fafafa] w-full px-3 py-2;
 }
-.amountCurrency,
+
 .selectCurrency:focus {
   outline: none;
 }

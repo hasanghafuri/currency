@@ -36,10 +36,10 @@ watch(
 
 <style scoped>
 .warper {
-  @apply flex items-center justify-between bg-[#fafafa] px-3 py-4 rounded-lg;
+  @apply flex items-center justify-between bg-[#fafafa] px-3 py-2 rounded-lg;
 }
 .amount {
-  @apply px-3 py-4 border-none w-full bg-[#fafafa];
+  @apply px-3 py-2 border-none w-full bg-[#fafafa];
 }
 .amount:focus {
   outline: none;
